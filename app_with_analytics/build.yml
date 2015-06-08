@@ -1,0 +1,28 @@
+sdk: "/Users/yosemite/.rvm/gems/ruby-1.9.3-p551/gems/rhodes-5.1.0.beta.17"
+sdkversion: "5.0.0"
+name: "sample_analytics_project"
+version: "1.0"
+vendor: "rhomobile"
+build: "debug"
+applog: "rholog.txt"
+iphone:
+  configuration: "Release"
+  sdk: "iphonesimulator8.3"
+  provisionprofile: 
+  codesignidentity: "iPhone Developer"
+  entitlements: 
+  BundleIdentifier: "com.rhomobile.sampleanalyticsproject"
+  BundleURLScheme: "sampleanalyticsproject"
+  production:
+    ipa_itunesartwork_image: "./production/iTunesArtwork.png"
+wp8:
+  productid: "ffdf94c0-edc6-0132-50ba-70cd60f27196"
+android:
+  manifest_template: "AndroidManifest.erb"
+  version: "2.3.3"
+  logcatFilter: "APP:I StrictMode:I DEBUG:I *:E"
+wm: 
+extensions:
+  - rhoconnect-client
+app_type: "rhoelements"
+capabilities:

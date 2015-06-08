@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="assets/css/pageslider.css" rel="stylesheet">
+    <link href="assets/ratchet/css/ratchet.css" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<!-- tools template -->
+<script id="tools-tpl" type="text/template">
+    <header class="bar bar-nav">
+        <h1 class="title">All in One Zebra App</h1>
+      <img class="media-object pull-left emp-pic" src="assets/supplies_pics/zebra.jpg">
+    </header>
+  <div class="content">
+          <div class="card">
+              <ul class="table-view">
+                  <li class="table-view-cell media">
+                      <a href="#home" class="push-right"> 
+                          <span class="media-object pull-left icon icon-person"></span>
+                          <div class="media-body">
+                              Zebra Social Network
+                          </div>
+                      </a>
+                  </li>
+                  <li class="table-view-cell media">
+                      <a hre="#" class="push-right help-btn">
+                          <span class="media-object pull-left icon icon-search"></span>
+                          <div class="media-body">
+                              Submit ticket for IT assistance
+                          </div>
+                      </a>
+                  </li>
+                  <li class="table-view-cell media">
+                      <a href="#supplies" class="push-right">
+                          <span class="media-object pull-left icon icon-bars"></span>
+                          <div class="media-body">
+                              Purchases Out of Stock Office Supplies
+                          </div>
+                      </a>
+                  </li>
+               </ul>
+          </div>
+      </div>
+</script>
+	<!-- homeview template -->
+<script id="home-tpl" type="text/template">
+    <header class="bar bar-nav">
+          <a class="btn btn-link btn-nav pull-left" href="#">
+              <span class="icon icon-left-nav"></span>
+          </a>
+          <h1 class="title">Search Friends List</h1>
+      </header>
+    <div class="bar bar-standard bar-header-secondary">
+        <input class='search-key' type="search"/>
+    </div> 
+    <div class="content"></div>
+</script>
+<!-- employee list view template -->
+<script id="employee-list-tpl" type="text/template">
+    <ul class="table-view">
+        {{#each this}}
+        <li class="table-view-cell media">
+          <a href="#employees/{{ id }}">
+              <img class="media-object pull-left" src="assets/pics/{{pic}}">
+              <div class="media-body">
+                  {{firstName}} {{lastName}}
+                  <p>{{title}}</p>
+              </div>
+          </a>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+<!-- employee view template -->
+<script id="employee-tpl" type="text/template">
+      <header class="bar bar-nav">
+          <a class="btn btn-link btn-nav pull-left" href="#">
+              <span class="icon icon-left-nav"></span>
+          </a>
+          <h1 class="title">Profile Page</h1>
+      </header>
+      <div class="content">
+          <div class="card">
+              <ul class="table-view">
+                  <li class="table-view-cell media">
+                      <img class="media-object pull-left emp-pic" src="assets/pics/{{pic}}">
+                      <div class="media-body">
+                          {{ firstName }} {{ lastName }}
+                          <p>{{ title }}</p>
+                      </div>
+                  </li>
+                  <li class="table-view-cell media">
+                      <a href="tel:{{ officePhone }}" class="push-right contact-someone-btn">
+                          <span class="media-object pull-left icon icon-call"></span>
+                          <div class="media-body">
+                              Call Office
+                              <p>{{ officePhone }}</p>
+                          </div>
+                      </a>
+                  </li>
+                  <li class="table-view-cell media">
+                      <a href="tel:{{ cellPhone }}" class="push-right contact-someone-btn">
+                          <span class="media-object pull-left icon icon-call"></span>
+                          <div class="media-body">
+                              Call Cell
+                              <p>{{ cellPhone }}</p>
+                          </div>
+                      </a>
+                  </li>
+                  <li class="table-view-cell media">
+                      <a href="sms:{{ cellPhone }}" class="push-right contact-someone-btn">
+                          <span class="media-object pull-left icon icon-sms"></span>
+                          <div class="media-body">
+                              SMS
+                              <p>{{ cellPhone }}</p>
+                          </div>
+                      </a>
+                  </li>
+                  <li class="table-view-cell media">
+                      <a href="mailto:{{ email }}" class="push-right contact-someone-btn">
+                          <span class="media-object pull-left icon icon-mail"></span>
+                          <div class="media-body">
+                              Email
+                              <p>{{ email }}</p>
+                          </div>
+                      </a>
+                  </li>
+                  <li class="table-view-cell media">
+    				<a hre="#" class="push-right thumbs-up-btn">
+        				<span class="media-object pull-left icon icon-check"></span>
+        				<div class="media-body">
+            			Like {{firstName}}s work
+        				</div>
+    				</a>
+				</li>
+              </ul>
+          </div>
+      </div>
+  </script>
+
+<!-- supplies home template -->
+<script id="supplies-home-tpl" type="text/template">
+        <header class="bar bar-nav">
+          <a class="btn btn-link btn-nav pull-left" href="#">
+              <span class="icon icon-left-nav"></span>
+          </a>
+          <h1 class="title">Profile Page</h1>
+      </header>
+      <div class="content">
+          <div class="card">
+              <ul class="table-view">
+                  <li class="table-view-cell media">
+                          <img class="media-object pull-left emp-pic" src="assets/supplies_pics/stapler.jpg">
+                          <div class="media-body">
+                              Stapler
+                              <p>$4.99</p>
+                          </div>
+                      </a>
+                    <button class="btn btn-positive buy-btn">Buy</button>
+                  </li>
+                  <li class="table-view-cell media">
+                   <img class="media-object pull-left emp-pic" src="assets/supplies_pics/ink.jpg">
+                          <div class="media-body">
+                              Printer Ink
+                              <p>$15.99</p>
+                          </div>
+                      </a>
+                      <button class="btn btn-positive buy-btn">Buy</button>
+                  </li>
+                  <li class="table-view-cell media">
+                   <img class="media-object pull-left emp-pic" src="assets/supplies_pics/paper_clips.jpg">
+                          <div class="media-body">
+                              Assorted Paper Clips
+                              <p>$3.99</p>
+                          </div>
+                      </a>
+                      <button class="btn btn-positive buy-btn">Buy</button>
+                  </li>
+                  <li class="table-view-cell media">
+                   <img class="media-object pull-left emp-pic" src="assets/supplies_pics/mac.jpg">
+                          <div class="media-body">
+                              MacBook Pro
+                              <p>$1789.95</p>
+                          </div>
+                      </a>
+                      <button class="btn btn-positive buy-btn">Buy</button>
+                  </li>
+                  <li class="table-view-cell media">
+                 <img class="media-object pull-left emp-pic" src="assets/supplies_pics/scotch_tape.jpg">
+                <div class="media-body">
+                  Scotch tape
+                  <p>$1.95</p>
+                </div>
+            </a>
+            <button class="btn btn-positive buy-btn">Buy</button>
+        </li>
+        <li class="table-view-cell media">
+          <img class="media-object pull-left emp-pic" src="assets/supplies_pics/glue_stick.jpg">
+              <div class="media-body">
+                  Glue Sticks
+                  <p>$5.95</p>
+              </div>
+            </a>
+            <button class="btn btn-positive buy-btn">Buy</button>
+        </li>
+              </ul>
+          </div>
+      </div>>
+  </script>
+
+<script src="cordova.js"></script>
+<script src="lib/handlebars.js"></script>
+<script src="lib/fastclick.js"></script>
+<script src="lib/jquery.js"></script>
+<script src="lib/pageslider.js"></script>
+<script src="lib/router.js"></script>
+<script src="js/services/memory/EmployeeService.js"></script>
+<script src="js/EmployeeListView.js"></script>
+<script src="js/EmployeeView.js"></script>
+<script src="js/HomeView.js"></script>
+<script src="js/useful_tools.js"></script>
+<script src="js/suppliesHome.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
